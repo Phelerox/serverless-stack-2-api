@@ -15,4 +15,4 @@ Resources:
         - AttributeName: noteId
           KeyType: RANGE
       # Set the capacity to auto-scale
-      BillingMode: PROVISIONED_CAPACITY
+      BillingMode: PROVISIONED
