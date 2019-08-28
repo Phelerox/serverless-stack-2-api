@@ -1,6 +1,6 @@
 service: notes-app-2-api
 
-# Create an optimized package for our functions 
+# Create an optimized package for our functions
 package:
   individually: true
 
@@ -16,7 +16,7 @@ custom:
   tableName: ${self:custom.stage}-notes
   # Load our secret environment variables based on the current stage.
   # Fallback to default if it is not in prod.
-  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+  stripeSecretKey: ${file(serverless.env.yml):stripeSecretKey} # ${file(serverless.env.yml):${self:custom.stage}, file(serverless.env.yml):default}
 
 provider:
   name: aws
@@ -28,7 +28,7 @@ provider:
   # under process.env.
   environment:
     tableName: ${self:custom.tableName}
-    stripeSecretKey: ${self:custom.environment.stripeSecretKey}
+    stripeSecretKey: ${self:custom.stripeSecretKey}
 
 
   iamRoleStatements:
